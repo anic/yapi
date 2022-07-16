@@ -241,7 +241,7 @@ pluginsConfig.forEach(plugin => {
       yapi.path.join(plugin_path, 'yapi-plugin-' + plugin.name + '/server.js')
     )
   ) {
-    throw new Error(`config.json配置了插件${plugin},但plugins目录没有找到此插件，请安装此插件`);
+    throw new Error(`config.json配置了插件${plugin.name},但plugins目录没有找到此插件，请安装此插件`);
   }
   let pluginModule = require(yapi.path.join(
     plugin_path,
