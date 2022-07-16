@@ -44,7 +44,7 @@ class userController extends baseController {
     let result = await userInst.findByEmail(email);
 
     if (!result) {
-      return (ctx.body = yapi.commons.resReturn(null, 404, '该用户不存在'));
+      return (ctx.body = yapi.commons.resReturn(null, 404, '账号名或密码错误'));
     } else if (yapi.commons.generatePassword(password, result.passsalt) === result.password) {
       this.setLoginCookie(result._id, result.passsalt);
 
@@ -63,7 +63,7 @@ class userController extends baseController {
         'logout success...'
       ));
     } else {
-      return (ctx.body = yapi.commons.resReturn(null, 405, '密码错误'));
+      return (ctx.body = yapi.commons.resReturn(null, 404, '账号名或密码错误'));
     }
   }
 
